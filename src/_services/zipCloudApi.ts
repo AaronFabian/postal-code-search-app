@@ -17,8 +17,8 @@ export const zipCloudApi = {
 					if (errResponse.message !== null) {
 						message = errResponse.message;
 					}
-				} catch (error) {
-					message = '不明なエラーが発生しました';
+				} catch {
+					message = await response.text();
 				}
 
 				return { results: null, status: response.status, message };
