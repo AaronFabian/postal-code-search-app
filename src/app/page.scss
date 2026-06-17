@@ -2,7 +2,7 @@
 
 .container {
 	padding-top: 2rem;
-	padding-bottom: 2rem;
+	padding-bottom: 5rem;
 
 	.title {
 		font-weight: var.$font-bold;
@@ -42,7 +42,8 @@
 
 			&:focus {
 				outline: none;
-				border-color: #4d9aff;
+				border-color: #e59702;
+				border-width: 0.2rem;
 			}
 		}
 
@@ -50,21 +51,24 @@
 			flex-shrink: 0;
 			height: 3.2rem;
 			padding: 0 1.5rem;
-			border: none;
+			border: 0.2rem solid transparent;
 			border-radius: 0.5rem;
 			background-color: #1f7bed;
 			color: #fff;
 			font-size: 0.95rem;
 			white-space: nowrap;
 			cursor: pointer;
-			transition: background-color 0.15s ease;
+			transition:
+				background-color 0.15s ease,
+				border-color 0.15s ease;
 
 			&:hover {
 				background-color: #1768cc;
 			}
 
-			&:active {
-				background-color: #135aa9;
+			&:focus {
+				outline: none;
+				border-color: #e59702;
 			}
 		}
 	}
@@ -139,6 +143,66 @@
 			max-width: 48rem;
 		}
 
+		.history-carousel {
+			position: relative;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+
+			.carousel-prev,
+			.carousel-next {
+				cursor: pointer;
+				background-color: transparent;
+				position: absolute;
+				border: none;
+				width: 2rem;
+
+				svg {
+					fill: black;
+					stroke-width: 3;
+				}
+
+				&:disabled {
+					cursor: default;
+
+					svg {
+						fill: var.$gray-light;
+					}
+				}
+			}
+
+			.carousel-next {
+				right: -7%;
+				z-index: 9;
+			}
+			.carousel-prev {
+				left: -7%;
+				z-index: 9;
+			}
+
+			@media (min-width: var.$PC) {
+				.carousel-next {
+					right: -5%;
+				}
+				.carousel-prev {
+					left: -5%;
+				}
+			}
+
+			.history-pagination {
+				display: flex;
+				justify-content: center;
+				margin-top: 1rem;
+				position: absolute;
+				bottom: 0;
+				transform: translateY(2.2rem);
+
+				.swiper-pagination-bullet-active {
+					background-color: var.$gray;
+				}
+			}
+		}
+
 		.history-title {
 			text-align: center;
 			font-size: 1.1rem;
@@ -193,22 +257,6 @@
 				.value {
 					color: #333;
 				}
-			}
-		}
-
-		button.carousel-btn-left {
-			border-radius: 50%;
-			border: none;
-			background-color: transparent;
-			width: 2rem;
-
-			&:active {
-				background-color: var.$gray-light-200;
-			}
-
-			&:disabled {
-				// Deactivate color
-				fill: var.$gray;
 			}
 		}
 	}
