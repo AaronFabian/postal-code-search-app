@@ -1,0 +1,221 @@
+@use '@/_styles/variables.scss' as var;
+
+.container {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+
+	.title {
+		font-weight: var.$font-bold;
+		text-align: center;
+	}
+
+	.description-section {
+		margin-top: 2rem;
+
+		.description {
+			text-align: center;
+			color: var.$gray;
+			font-size: 1.2rem;
+		}
+	}
+
+	.search-section {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		max-width: 33rem;
+		margin: 2rem auto 0;
+
+		.search-input {
+			flex: 1;
+			height: 3.2rem;
+			padding: 0 1rem;
+			border: 1px solid #d9d9d9;
+			border-radius: 0.5rem;
+			font-size: 0.95rem;
+			color: #333;
+			background-color: #fff;
+
+			&::placeholder {
+				color: var.$gray;
+			}
+
+			&:focus {
+				outline: none;
+				border-color: #4d9aff;
+			}
+		}
+
+		.search-button {
+			flex-shrink: 0;
+			height: 3.2rem;
+			padding: 0 1.5rem;
+			border: none;
+			border-radius: 0.5rem;
+			background-color: #1f7bed;
+			color: #fff;
+			font-size: 0.95rem;
+			white-space: nowrap;
+			cursor: pointer;
+			transition: background-color 0.15s ease;
+
+			&:hover {
+				background-color: #1768cc;
+			}
+
+			&:active {
+				background-color: #135aa9;
+			}
+		}
+	}
+
+	.error-message {
+		margin: 1.2rem auto 0;
+		text-align: center;
+		color: #ff2e24;
+		font-size: 1rem;
+		max-width: 33rem;
+	}
+
+	.result-section {
+		margin: 2rem auto 0;
+		max-width: 33rem;
+		width: 96%;
+
+		@media (min-width: var.$PC) {
+			max-width: 48rem;
+		}
+
+		.result-card {
+			margin: 0.8rem auto 0;
+			padding: 1.25rem 1.5rem;
+			border: 0.1rem solid var.$border-color;
+			border-radius: 0.5rem;
+			background-color: var.$white;
+
+			.postal-row {
+				font-size: 1rem;
+
+				.label {
+					margin-right: 0.4rem;
+				}
+			}
+
+			.divider {
+				margin: 0.85rem 0;
+				border: none;
+				border-top: 1px solid var.$border-color;
+			}
+
+			.info-row {
+				display: flex;
+				font-size: 0.95rem;
+				line-height: 1.8;
+
+				.label {
+					flex-shrink: 0;
+					width: 3.6rem;
+					color: #333;
+				}
+
+				.value {
+					color: #333;
+				}
+
+				& + .info-row {
+					margin-top: 0.1rem;
+				}
+			}
+		}
+	}
+
+	.history-section {
+		max-width: 33rem;
+		margin-top: 2.5rem;
+		width: 96%;
+		margin: 1.5rem auto 0;
+
+		@media (min-width: var.$PC) {
+			max-width: 48rem;
+		}
+
+		.history-title {
+			text-align: center;
+			font-size: 1.1rem;
+			font-weight: var.$font-bold;
+			margin-bottom: 1.5rem;
+		}
+
+		.history-grid {
+			min-height: 33rem;
+			display: grid;
+			gap: 1.25rem;
+			margin: 0 auto;
+			grid-template-columns: 1fr;
+
+			@media (min-width: var.$PC) {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		.history-card {
+			padding: 1.1rem 1.25rem;
+			border-radius: 0.5rem;
+			background-color: var.$gray-light;
+			min-height: 8rem;
+
+			@media (min-width: var.$PC) {
+				min-height: 18rem;
+			}
+
+			.postal-row {
+				font-size: 0.95rem;
+				font-weight: var.$font-bold;
+			}
+
+			.divider {
+				margin: 0.75rem 0;
+				border: none;
+				border-top: 1px solid var.$border-color;
+			}
+
+			.info-row {
+				display: flex;
+				font-size: 0.88rem;
+				line-height: 1.7;
+
+				.label {
+					flex-shrink: 0;
+					width: 3.4rem;
+					color: #333;
+				}
+
+				.value {
+					color: #333;
+				}
+			}
+		}
+
+		button.carousel-btn-left {
+			border-radius: 50%;
+			border: none;
+			background-color: transparent;
+			width: 2rem;
+
+			&:active {
+				background-color: var.$gray-light-200;
+			}
+
+			&:disabled {
+				// Deactivate color
+				fill: var.$gray;
+			}
+		}
+	}
+}
+
+@media (min-width: var.$PC) {
+	html {
+		font-size: 92%;
+	}
+}
