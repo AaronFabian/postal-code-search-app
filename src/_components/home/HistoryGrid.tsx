@@ -13,76 +13,86 @@ import CarouselPrevBtn from '@/_components/home/CarouselPrevBtn';
 
 const ITEMS_PER_PAGE = 3;
 
-export default function HistoryGrid({ searchHistories }: { searchHistories: SearchHistory[] }) {
-	if (searchHistories.length < 0) return null;
+export default function HistoryGrid({
+  searchHistories,
+}: {
+  searchHistories: SearchHistory[];
+}) {
+  if (searchHistories.length < 0) return null;
 
-	const pages: SearchHistory[][] = [];
+  const pages: SearchHistory[][] = [];
 
-	for (let i = 0; i < searchHistories.length; i += ITEMS_PER_PAGE) {
-		pages.push(searchHistories.slice(i, i + ITEMS_PER_PAGE));
-	}
+  for (let i = 0; i < searchHistories.length; i += ITEMS_PER_PAGE) {
+    pages.push(searchHistories.slice(i, i + ITEMS_PER_PAGE));
+  }
 
-	return (
-		<div className="history-carousel">
-			<CarouselPrevBtn className="carousel-prev" />
-			<Swiper
-				slidesPerView={1}
-				spaceBetween={24}
-				pagination={{
-					el: '.history-pagination',
-					clickable: true,
-				}}
-				navigation={{
-					prevEl: '.carousel-prev',
-					nextEl: '.carousel-next',
-				}}
-				loop={false}
-				modules={[Pagination, Navigation]}
-				className="history-swiper"
-			>
-				{pages.map((page, pageIndex) => (
-					<SwiperSlide key={pageIndex}>
-						<div className="history-grid">
-							{page.map((history, historyIndex) => (
-								<div className="history-card" key={`${history.zipcode}-${pageIndex}-${historyIndex}`}>
-									<div className="postal-row">郵便番号: {history.zipcode}</div>
+  return (
+    <div className="history-carousel">
+      <CarouselPrevBtn className="carousel-prev" />
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={24}
+        pagination={{
+          el: '.history-pagination',
+          clickable: true,
+        }}
+        navigation={{
+          prevEl: '.carousel-prev',
+          nextEl: '.carousel-next',
+        }}
+        loop={false}
+        modules={[Pagination, Navigation]}
+        className="history-swiper"
+      >
+        {pages.map((page, pageIndex) => (
+          <SwiperSlide key={pageIndex}>
+            <div className="history-grid">
+              {page.map((history, historyIndex) => (
+                <div
+                  className="history-card"
+                  key={`${history.zipcode}-${pageIndex}-${historyIndex}`}
+                >
+                  <div className="postal-row">郵便番号: {history.zipcode}</div>
 
-									<hr className="divider" />
+                  <hr className="divider" />
 
-									{history.addresses.map((address, addressIndex) => (
-										<React.Fragment key={addressIndex}>
-											<div className="info-row">
-												<span className="label">住所:</span>
+                  {history.addresses.map((address, addressIndex) => (
+                    <React.Fragment key={addressIndex}>
+                      <div className="info-row">
+                        <span className="label">住所:</span>
 
-												<span className="value">
-													{address.address1} {address.address2} {address.address3}
-												</span>
-											</div>
+                        <span className="value">
+                          {address.address1} {address.address2}{' '}
+                          {address.address3}
+                        </span>
+                      </div>
 
-											<div className="info-row">
-												<span className="label">カナ:</span>
+                      <div className="info-row">
+                        <span className="label">カナ:</span>
 
-												<span className="value">
-													{address.kana1} {address.kana2} {address.kana3}
-												</span>
-											</div>
+                        <span className="value">
+                          {address.kana1} {address.kana2} {address.kana3}
+                        </span>
+                      </div>
 
-											{addressIndex !== history.addresses.length - 1 && <hr className="divider" />}
-										</React.Fragment>
-									))}
-								</div>
-							))}
-						</div>
-					</SwiperSlide>
-				))}
-			</Swiper>
-			<CarouselNextBtn className="carousel-next" />
+                      {addressIndex !== history.addresses.length - 1 && (
+                        <hr className="divider" />
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <CarouselNextBtn className="carousel-next" />
 
-			<div className="history-pagination" />
-		</div>
-	);
+      <div className="history-pagination" />
+    </div>
+  );
 
-	/*
+  /*
 	return (
 		<>
 			<div className="history-grid">
