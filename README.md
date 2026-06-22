@@ -1,5 +1,9 @@
 # Postal Code Search App
 
+## Project repository URL
+
+https://github.com/AaronFabian/postal-code-search-app
+
 ## Overview
 
 A Single Page Application (SPA) for searching Japanese addresses by postal code using the ZipCloud API.
