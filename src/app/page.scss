@@ -36,11 +36,11 @@
       flex: 1;
       height: 3.2rem;
       padding: 0 1rem;
-      border: 1px solid #d9d9d9;
+      border: 1px solid var.$text-input;
       border-radius: 0.5rem;
       font-size: 0.95rem;
-      color: #333;
-      background-color: #fff;
+      color: var.$text;
+      background-color: var.$white;
 
       &::placeholder {
         color: var.$gray;
@@ -48,7 +48,7 @@
 
       &:focus {
         outline: none;
-        border-color: #e59702;
+        border-color: var.$accent;
         border-width: 0.2rem;
       }
     }
@@ -59,8 +59,8 @@
       padding: 0 1.5rem;
       border: 0.2rem solid transparent;
       border-radius: 0.5rem;
-      background-color: #1f7bed;
-      color: #fff;
+      background-color: var.$primary;
+      color: var.$white;
       font-size: 0.95rem;
       white-space: nowrap;
       cursor: pointer;
@@ -69,12 +69,12 @@
         border-color 0.15s ease;
 
       &:hover {
-        background-color: #1768cc;
+        background-color: var.$primary-dark;
       }
 
       &:focus {
         outline: none;
-        border-color: #e59702;
+        border-color: var.$accent;
       }
     }
   }
@@ -82,7 +82,7 @@
   .error-message {
     margin: 1.2rem auto 0;
     text-align: center;
-    color: #ff2e24;
+    color: var.$error;
     font-size: 1rem;
     max-width: 33rem;
   }
@@ -130,11 +130,11 @@
         .label {
           flex-shrink: 0;
           width: 3.6rem;
-          color: #333;
+          color: var.$text;
         }
 
         .value {
-          color: #333;
+          color: var.$text;
         }
 
         & + .info-row {
@@ -171,7 +171,7 @@
         z-index: 9;
 
         svg {
-          fill: black;
+          fill: var.$black;
           stroke-width: 3;
         }
 
@@ -255,11 +255,11 @@
         .label {
           flex-shrink: 0;
           width: 3.4rem;
-          color: #333;
+          color: var.$text;
         }
 
         .value {
-          color: #333;
+          color: var.$text;
         }
       }
     }

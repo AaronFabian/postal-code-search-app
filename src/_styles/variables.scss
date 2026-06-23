@@ -1,16 +1,63 @@
-// Size
-$PC: 48em;
+@use 'sass:map';
 
-// Font Weight
-$font-thin: 300;
-$font-normal: 400;
-$font-bold: 500;
+// Breakpoints
+$breakpoints: (
+  'pc': 48em,
+);
 
-// Color
-$white: #fff;
-$gray: #696969;
-$gray-light: #efefef;
-$gray-light-200: #d5d5d5;
+@function bp($key) {
+  @return map.get($breakpoints, $key);
+}
 
-// Component color
+// Keep shorthand for use in media queries
+$PC: bp('pc');
+
+// Font Weights
+$font-weights: (
+  'thin': 300,
+  'normal': 400,
+  'bold': 500,
+);
+
+@function fw($key) {
+  @return map.get($font-weights, $key);
+}
+
+$font-thin: fw('thin');
+$font-normal: fw('normal');
+$font-bold: fw('bold');
+
+// Colors
+$colors: (
+  'white': #fff,
+  'black': #000,
+  'gray': #696969,
+  'gray-light': #efefef,
+  'gray-light-200': #d5d5d5,
+  'text': #333,
+  'text-input': #d9d9d9,
+  'accent': #e59702,
+  'primary': #1f7bed,
+  'primary-dark': #1768cc,
+  'error': #ff2e24,
+  'blue': #1f7bed,
+);
+
+@function color($key) {
+  @return map.get($colors, $key);
+}
+
+$white: color('white');
+$black: color('black');
+$gray: color('gray');
+$gray-light: color('gray-light');
+$gray-light-200: color('gray-light-200');
+$text: color('text');
+$text-input: color('text-input');
+$accent: color('accent');
+$primary: color('primary');
+$primary-dark: color('primary-dark');
+$error: color('error');
+
+// Component Tokens
 $border-color: $gray-light-200;
