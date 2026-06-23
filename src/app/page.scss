@@ -1,5 +1,11 @@
 @use '@/_styles/variables.scss' as var;
 
+@media (min-width: var.$PC) {
+  html {
+    font-size: 92%;
+  }
+}
+
 .container {
   padding-top: 2rem;
   padding-bottom: 5rem;
@@ -81,14 +87,19 @@
     max-width: 33rem;
   }
 
-  .result-section {
-    margin: 2rem auto 0;
-    max-width: 33rem;
+  // Shared layout for result and history sections
+  %section-layout {
     width: 96%;
+    max-width: 33rem;
+    margin: 2rem auto 0;
 
     @media (min-width: var.$PC) {
       max-width: 48rem;
     }
+  }
+
+  .result-section {
+    @extend %section-layout;
 
     .result-card {
       margin: 0.8rem auto 0;
@@ -134,13 +145,14 @@
   }
 
   .history-section {
-    max-width: 33rem;
-    margin-top: 2.5rem;
-    width: 96%;
-    margin: 1.5rem auto 0;
+    @extend %section-layout;
+    margin-top: 1.5rem;
 
-    @media (min-width: var.$PC) {
-      max-width: 48rem;
+    .history-title {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: var.$font-bold;
+      margin-bottom: 1.5rem;
     }
 
     .history-carousel {
@@ -156,6 +168,7 @@
         position: absolute;
         border: none;
         width: 2rem;
+        z-index: 9;
 
         svg {
           fill: black;
@@ -171,21 +184,19 @@
         }
       }
 
-      .carousel-next {
-        right: -7%;
-        z-index: 9;
-      }
       .carousel-prev {
         left: -7%;
-        z-index: 9;
+
+        @media (min-width: var.$PC) {
+          left: -5%;
+        }
       }
 
-      @media (min-width: var.$PC) {
-        .carousel-next {
+      .carousel-next {
+        right: -7%;
+
+        @media (min-width: var.$PC) {
           right: -5%;
-        }
-        .carousel-prev {
-          left: -5%;
         }
       }
 
@@ -201,13 +212,6 @@
           background-color: var.$gray;
         }
       }
-    }
-
-    .history-title {
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: var.$font-bold;
-      margin-bottom: 1.5rem;
     }
 
     .history-grid {
@@ -259,11 +263,5 @@
         }
       }
     }
-  }
-}
-
-@media (min-width: var.$PC) {
-  html {
-    font-size: 92%;
   }
 }
